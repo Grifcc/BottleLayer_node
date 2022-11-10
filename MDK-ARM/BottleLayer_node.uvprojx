@@ -760,9 +760,9 @@
           <GroupName>ID</GroupName>
           <Files>
             <File>
-              <FileName>id.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\Inc\id.h</FilePath>
+              <FileName>id.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\id.c</FilePath>
             </File>
           </Files>
         </Group>

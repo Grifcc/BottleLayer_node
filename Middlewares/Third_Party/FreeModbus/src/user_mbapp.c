@@ -43,7 +43,7 @@ const osThreadAttr_t modbusTask_attributes = {
 };
 void modbus_task( void* args )
 {
-    eMBInit( MB_RTU, ID, 0, 9600, MB_PAR_NONE );  //modbusRTU 9600 无校验
+    eMBInit( MB_RTU, address, 0, 9600, MB_PAR_NONE );  //modbusRTU 9600 无校验
 
     /* Enable the Modbus Protocol Stack. */
     eMBEnable(  );
