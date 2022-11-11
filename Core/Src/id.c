@@ -27,7 +27,7 @@ void Getaddress(void)
 	uint8_t  addrtmp=0x00;
 	for(uint8_t i=0;i<8;i++)
 	{
-		addrtmp=addrtmp<<1|(~HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_12));
+		addrtmp=addrtmp<<1|(~HAL_GPIO_ReadPin(Addrinput[i].GPIOBase,Addrinput[i].GPIONum));
 	}
 	address=addrtmp;
 }
