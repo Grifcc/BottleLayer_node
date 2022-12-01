@@ -4,30 +4,28 @@
 #include "cmsis_os.h"
 #include "gpio.h"
 
-uint8_t address=0xff;
+uint8_t address=0x0;
 
 /*
-Address£ºPA15 PB3 PB4 PB5 PB6 PB7 PA7 PA6
+Address£ºPA6 PA7 PB7 PB6 PB5 PB4 PB3 PA15
 */
 typedef  struct _PINS
 {
 	GPIO_TypeDef* GPIOBase;
 	uint16_t GPIONum;
 }PINS;
-PINS Addrinput[8]={ {GPIOA,GPIO_PIN_15},
-										{GPIOB,GPIO_PIN_3},
-										{GPIOB,GPIO_PIN_4},
-										{GPIOB,GPIO_PIN_5},
-										{GPIOB,GPIO_PIN_6},
-										{GPIOB,GPIO_PIN_7},
+PINS Addrinput[8]={ {GPIOA,GPIO_PIN_6},
 										{GPIOA,GPIO_PIN_7},
-										{GPIOA,GPIO_PIN_6}};
+										{GPIOB,GPIO_PIN_7},
+										{GPIOB,GPIO_PIN_6},
+										{GPIOB,GPIO_PIN_5},
+										{GPIOB,GPIO_PIN_4},
+										{GPIOB,GPIO_PIN_3},
+										{GPIOA,GPIO_PIN_15}};
 void Getaddress(void)
 {
-	uint8_t  addrtmp=0x00;
 	for(uint8_t i=0;i<8;i++)
 	{
-		addrtmp=addrtmp<<1|(~HAL_GPIO_ReadPin(Addrinput[i].GPIOBase,Addrinput[i].GPIONum));
+		address=address<<1 | ((~HAL_GPIO_ReadPin(Addrinput[i].GPIOBase,Addrinput[i].GPIONum))&0x01);
 	}
-	address=addrtmp;
 }
